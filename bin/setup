@@ -1,9 +1,7 @@
 #!/bin/bash
 
-activatorV="1.2.8"
-
 cd ${OPENSHIFT_DATA_DIR}
 curl ${ACTIVATOR_SOURCE_URL} > activator.zip
 unzip activator.zip
+ln -s ${OPENSHIFT_DATA_DIR}/activator-${ACTIVATOR_INSTALLATION_VERSION} ${OPENSHIFT_DATA_DIR}/activator
 rm activator.zip
-ln -s ${OPENSHIFT_DATA_DIR}/activator-${activatorV} ${OPENSHIFT_DATA_DIR}/activator
