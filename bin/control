@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 function start {
-    cd $OPENSHIFT_HOMEDIR/app-root/runtime/
+    cd $OPENSHIFT_REPO_DIR
     echo
     echo "Starting play app"
     echo
@@ -11,7 +11,7 @@ function start {
       echo "App not deployed yet"
       build
     else 
-      nohup bin/messageboard-backend -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
+      nohup target/universal/stage/bin/${PLAY_APP_NAME} -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
     fi
     echo
 }
