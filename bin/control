@@ -6,7 +6,7 @@ function start {
     echo "Starting play app"
     echo
     
-    if [ ! -f bin/messageboard-backend ]
+    if [ ! -f target/universal/stage/bin/${PLAY_APP_NAME} ]
     then
       echo "App not deployed yet"
       build
@@ -41,6 +41,7 @@ function build {
     echo
     echo "Building (From control script)"
     echo
+    activator clean stage
 }
 
 function tidy {

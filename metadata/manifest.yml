@@ -18,6 +18,9 @@ Scaling:
   Min: 1
   Max: -1
 Cart-Data:
+  - Key: PLAY_APP_NAME
+    Type: environment
+    Description: "Internal name of the deployed play application."
   - Key: OPENSHIFT_PLAY2_LOG_DIR
     Type: environment
     Description: "Directory to store application log files."
