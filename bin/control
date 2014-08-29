@@ -2,12 +2,8 @@
 
 function start {
     cd $OPENSHIFT_HOMEDIR/app-root/runtime/
-    # build on first time
-    #rm -f target/universal/stage/RUNNING_PID
-    
-    # Lets abuse the deploy script
     echo
-    echo "Starting (From control script)"
+    echo "Starting play app"
     echo
     
     if [ ! -f bin/messageboard-backend ]
@@ -15,7 +11,7 @@ function start {
       echo "App not deployed yet"
       build
     else 
-      nohup bin/messageboard-backend -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
+      nohup bin/messageboard-backend -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true ${PLAY_OPTS} > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
     fi
     echo
 }
@@ -27,6 +23,18 @@ function stop {
 function restart {
     stop
     start
+}
+
+function pre-build {
+  echo
+  echo "Installing activator"
+  echo
+
+  cd ${OPENSHIFT_DATA_DIR}
+  curl ${ACTIVATOR_SOURCE_URL} > activator.zip
+  unzip activator.zip
+  rm activator.zip
+  ln -s ${OPENSHIFT_DATA_DIR}/activator-${activatorV} ${OPENSHIFT_DATA_DIR}/activator  
 }
 
 function build {
