@@ -8,7 +8,7 @@ function start {
     
     # Lets abuse the deploy script
     echo
-    echo "Starting (From deploy script)"
+    echo "Starting (From control script)"
     echo
 }
 
@@ -22,7 +22,9 @@ function restart {
 }
 
 function build {
-
+    echo
+    echo "Building (From control script)"
+    echo
 }
 
 function tidy {
