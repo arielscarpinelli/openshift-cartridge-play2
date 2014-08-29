@@ -12,10 +12,8 @@ Categories:
   - play
   - scala
   - web_framework
-  - activator
 Provides:
   - play2
-  - activator
 Scaling:
   Min: 1
   Max: -1
@@ -52,7 +50,6 @@ Cart-Data:
 Group-Overrides:
   - components:
     - play2
-    - activator
     - web_proxy
 Publishes:
   get-doc-root:
