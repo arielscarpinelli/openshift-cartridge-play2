@@ -5,6 +5,11 @@ function start {
     # build on first time
     #rm -f target/universal/stage/RUNNING_PID
     #nohup target/universal/stage/bin/play -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -Dconfig.resource=openshift.conf -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
+    
+    # Lets abuse the deploy script
+    echo
+    echo "Starting (From deploy script)"
+    echo
 }
 
 function stop {
