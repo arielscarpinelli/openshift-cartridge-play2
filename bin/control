@@ -9,11 +9,6 @@ function start {
     if [ ! -f target/universal/stage/bin/${PLAY_APP_NAME} ]
     then
       echo "App not deployed yet"
-      if [-e build.sbt ]
-      then
-        pre-build
-        build
-      fi
     else 
       nohup target/universal/stage/bin/${PLAY_APP_NAME} -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
     fi
