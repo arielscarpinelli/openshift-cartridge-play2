@@ -70,9 +70,9 @@ Subscribes:
   set-nosql-db-connection-info:
     Type: "ENV:NET_TCP:nosqldb:connection-info"
     Required : false
-  set-akka-cluster-info:
-    type: "ENV:NET_TCP:akka:cluster-info"
-    Required : false
+  set-env:
+    Type: ENV:*
+    Required: false
 Endpoints:
   - Private-IP-Name:   IP
     Private-Port-Name: PORT
