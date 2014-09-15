@@ -61,8 +61,8 @@ Publishes:
     Type: "NET_TCP:httpd-proxy-info"
   publish-gear-endpoint:
     Type: "NET_TCP:gear-endpoint-info"
-  publish-akka-cluster-url:
-    type: "NET_TCP:akka-cluster-info"
+  publish-akka-cluster-info:
+    type: "NET_TCP:akka:cluster-info"
 Subscribes:
   set-db-connection-info:
     Type: "ENV:NET_TCP:db:connection-info"
@@ -71,7 +71,8 @@ Subscribes:
     Type: "ENV:NET_TCP:nosqldb:connection-info"
     Required : false
   set-akka-cluster-info:
-    type: "ENV:NET_TCP:akka-cluster-info"
+    type: "ENV:NET_TCP:akka:cluster-info"
+    Required : false
 Endpoints:
   - Private-IP-Name:   IP
     Private-Port-Name: PORT
