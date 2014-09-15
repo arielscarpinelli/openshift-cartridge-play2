@@ -72,7 +72,7 @@ Subscribes:
     Required : false
 Endpoints:
   - Private-IP-Name:   IP
-    Private-Port-Name: PORT
+    Private-Port-Name: WEB_PORT
     Private-Port:      8080
     Public-Port-Name:  PROXY_PORT
     Mappings:
@@ -83,7 +83,7 @@ Endpoints:
         Backend:       ""
         Options:       { health: true }
         
-  - Private-IP-Name:   AKKA
-    Private-Port-Name: PORT
-    Private-Port:      2552
-    Public-Port-Name:  PROXY_PORT
+  - Private-IP-Name:   IP
+    Private-Port-Name: CLUSTER_PORT
+    Private-Port:      2550
+    Public-Port-Name:  AKKA_PORT
