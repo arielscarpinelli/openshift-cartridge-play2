@@ -61,6 +61,8 @@ Publishes:
     Type: "NET_TCP:httpd-proxy-info"
   publish-gear-endpoint:
     Type: "NET_TCP:gear-endpoint-info"
+  publish-akka-cluster-url:
+    type: "NET_TCP:akka-cluster-info"
 Subscribes:
   set-db-connection-info:
     Type: "ENV:NET_TCP:db:connection-info"
@@ -81,7 +83,7 @@ Endpoints:
         Backend:       ""
         Options:       { health: true }
         
-  - Private-IP-Name:   AKKKA_IP
-    Private-Port-Name: CLUSTER
+  - Private-IP-Name:   AKKA
+    Private-Port-Name: PORT
     Private-Port:      2552
-    Public-Port-Name:  CLUSTER_PORT
+    Public-Port-Name:  PROXY_PORT
