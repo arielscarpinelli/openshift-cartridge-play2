@@ -82,5 +82,6 @@ Endpoints:
         Options:       { health: true }
         
   - Private-IP-Name:   AKKKA_IP
-    Private-Port-Name: CLUSTER_PORT
-    Private-Port:      2550
+    Private-Port-Name: CLUSTER
+    Private-Port:      2552
+    Public-Port-Name:  CLUSTER_PORT
