@@ -4,9 +4,9 @@ Display-Name: Play Framework 2.3.3
 Description: "The High Velocity Web Framework For Java and Scala"
 Version: '2.3.3'
 License: "MIT"
-Vendor: none
+Vendor: typesafe
 Cartridge-Version: '2.3.3'
-Cartridge-Vendor: github
+Cartridge-Vendor: ticketfly
 Categories:
   - service
   - play
@@ -80,3 +80,7 @@ Endpoints:
       - Frontend:      "/health"
         Backend:       ""
         Options:       { health: true }
+        
+  - Private-IP-Name:   AKKKA_IP
+    Private-Port-Name: CLUSTER_PORT
+    Private-Port:      2550

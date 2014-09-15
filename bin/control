@@ -20,6 +20,9 @@ function stop {
 }
 
 function restart {
+    echo
+    echo "Restarting activator"
+    echo
     stop
     start
 }
