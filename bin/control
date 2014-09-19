@@ -2,17 +2,20 @@
 
 function start {
     cd $OPENSHIFT_REPO_DIR
-    echo
     echo "Starting play app"
-    echo
     
     if [ ! -f target/universal/stage/bin/${PLAY_APP_NAME} ]
     then
       echo "App not deployed yet"
     else
-      nohup target/universal/stage/bin/${PLAY_APP_NAME} -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -mem ${OPENSHIFT_GEAR_MEMORY_MB} ${PLAY_OPTS} > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
+      nohup target/universal/stage/bin/${PLAY_APP_NAME} \
+        -Duser.home=${OPENSHIFT_DATA_DIR} \
+        -Dhttp.port=${OPENSHIFT_PLAY2_WEB_PORT} \
+        -Dhttp.address=${OPENSHIFT_PLAY2_IP} \
+        -mem ${OPENSHIFT_GEAR_MEMORY_MB} \
+        ${PLAY_OPTS} \
+        > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
     fi
-    echo
 }
 
 function stop {
@@ -20,29 +23,23 @@ function stop {
 }
 
 function restart {
-    echo
     echo "Restarting activator"
-    echo
     stop
     start
 }
 
 function pre-build {
-  echo
   echo "Installing activator"
-  echo
 
   cd ${OPENSHIFT_DATA_DIR}
   curl ${ACTIVATOR_SOURCE_URL} > activator.zip
   unzip activator.zip
   rm activator.zip
-  ln -s ${OPENSHIFT_DATA_DIR}/activator-${activatorV} ${OPENSHIFT_DATA_DIR}/activator  
+  ln -s ${OPENSHIFT_DATA_DIR}/activator-${ACTIVATOR_VERSION} ${OPENSHIFT_DATA_DIR}/activator  
 }
 
 function build {
-    echo
     echo "Building (From control script)"
-    echo
     activator clean stage
 }
 
