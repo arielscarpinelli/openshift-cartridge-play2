@@ -10,7 +10,7 @@ function start {
     then
       echo "App not deployed yet"
     else 
-      nohup target/universal/stage/bin/${PLAY_APP_NAME} -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -J-javaagent:lib/newrelic.jar -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
+      nohup target/universal/stage/bin/${PLAY_APP_NAME} -Duser.home=${OPENSHIFT_DATA_DIR} -Dhttp.port=8080 -Dhttp.address=${OPENSHIFT_PLAY2_IP} -DapplyEvolutions.default=true -mem 512 > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
     fi
     echo
 }
