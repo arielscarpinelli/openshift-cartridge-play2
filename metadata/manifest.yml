@@ -65,15 +65,15 @@ Publishes:
   publish-akka-cluster-info:
     type: "NET_TCP:akka-cluster-info"
 Subscribes:
-  set-env:
-    Type: ENV:*
+  set-mysql-connection-info:
+    Type: NET_TCP:db:mysql
     Required: false
-  # set-mysql-connection-info:
-  #   Type: NET_TCP:db:mysql
-  #   Required: false
-  # set-postgres-connection-info:
-  #   Type: NET_TCP:db:postgres
-  #   Required: false
+  set-postgres-connection-info:
+    Type: NET_TCP:db:postgres
+    Required: false
+  set-akka-cluster-info:
+    Type: NET_TCP:akka-cluster-info
+    Required: false
 Endpoints:
   - Private-IP-Name:   IP
     Private-Port-Name: WEB_PORT
