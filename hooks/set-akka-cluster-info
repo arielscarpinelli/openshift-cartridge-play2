@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $@
+echo $@ > $OPENSHIFT_LOG_DIR/akka-cluster-info.log
