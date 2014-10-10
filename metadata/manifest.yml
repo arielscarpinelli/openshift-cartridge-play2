@@ -63,7 +63,7 @@ Publishes:
   publish-gear-endpoint:
     Type: "NET_TCP:gear-endpoint-info"
   publish-akka-cluster-info:
-    type: "NET_TCP:akka-cluster-info"
+    Type: "NET_TCP:akka-cluster-info"
 Subscribes:
   set-env:
     Type: ENV:*
