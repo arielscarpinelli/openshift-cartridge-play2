@@ -14,7 +14,7 @@ function start {
         -Duser.home=${OPENSHIFT_DATA_DIR} \
         -Dhttp.port=${OPENSHIFT_PLAY2_WEB_PORT} \
         -Dhttp.address=${OPENSHIFT_PLAY2_IP} \
-        -Dpidfile.path= ${PLAY_PID_FILE}\
+        -Dpidfile.path=${PLAY_PID_FILE} \
         -mem ${OPENSHIFT_GEAR_MEMORY_MB} \
         ${PLAY_OPTS} \
         > ${OPENSHIFT_LOG_DIR}/play.log 2>&1 &
