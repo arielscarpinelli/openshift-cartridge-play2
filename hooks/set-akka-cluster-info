@@ -6,10 +6,7 @@ gear_name = ARGV.shift
 domain = ARGV.shift
 gear_uuid = ARGV.shift
 
-pub_outputs = []
-while pub_output = ARGV.shift 
-  pub_outputs << pub_output
-end
+pub_outputs = ARGV.shift.split(' ')
 
 pub_outputs.each_with_index do |pub_output, seed_index|
   gear_id, value = pub_output.split('=')
