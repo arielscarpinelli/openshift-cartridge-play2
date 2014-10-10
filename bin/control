@@ -2,8 +2,6 @@
 
 source ${OPENSHIFT_CARTRIDGE_SDK_BASH}
 
-PLAY_PID_FILE=${OPENSHIFT_PLAY2_DIR}/run/play.pid
-
 function start {
     cd ${OPENSHIFT_REPO_DIR}
     
