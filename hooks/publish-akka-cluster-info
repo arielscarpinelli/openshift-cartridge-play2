@@ -8,4 +8,4 @@ set -e
 #
 # Publish this gear's Akka IP address and port.
 #
-echo "${OPENSHIFT_PLAY2_IP}:${OPENSHIFT_PLAY2_AKKA_CLUSTER_PROXY_PORT}"
+echo "akka.tcp://${AKKA_ACTOR_SYSTEM_NAME}@${OPENSHIFT_PLAY2_IP}:${OPENSHIFT_PLAY2_AKKA_CLUSTER_PROXY_PORT}"
