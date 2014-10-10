@@ -12,5 +12,6 @@ while pub_output = ARGV.shift
 end
 
 pub_outputs.each_with_index do |pub_output, seed_index|
-  File.open("env/AKKA_SEED_#{seed_index}", 'w'){ |f| f.puts pub_output }
+  gear_id, value = pub_output.split('=')
+  File.open(ENV['OPENSHIFT_PLAY2_DIR'] + "env/AKKA_SEED_#{seed_index}", 'w'){ |env_file| env_file.puts value}
 end
