@@ -1,51 +1,58 @@
 #!/bin/bash -e
 
+source ${OPENSHIFT_CARTRIDGE_SDK_BASH}
+
+PLAY_PID_FILE=${OPENSHIFT_PLAY2_DIR}/run/play.pid
+
 function start {
-    cd $OPENSHIFT_REPO_DIR
-    echo "Starting play app"
+    cd ${OPENSHIFT_REPO_DIR}
     
     if [ ! -f target/universal/stage/bin/${PLAY_APP_NAME} ]
     then
-      echo "App not deployed yet"
+      client_message "App not deployed yet"
     else
+      client_message "Starting play app"
       nohup target/universal/stage/bin/${PLAY_APP_NAME} \
         -Duser.home=${OPENSHIFT_DATA_DIR} \
         -Dhttp.port=${OPENSHIFT_PLAY2_WEB_PORT} \
         -Dhttp.address=${OPENSHIFT_PLAY2_IP} \
+        -Dpidfile.path= ${PLAY_PID_FILE}\
         -mem ${OPENSHIFT_GEAR_MEMORY_MB} \
         ${PLAY_OPTS} \
-        > $OPENSHIFT_PLAY2_LOG_DIR/play.log 2>&1 &
+        > ${OPENSHIFT_LOG_DIR}/play.log 2>&1 &
     fi
 }
 
 function stop {
-    killall java || true
+    kill $(cat ${OPENSHIFT_LOG_DIR}/play.lo) || true
 }
 
 function restart {
-    echo "Restarting activator"
+    client_message "Restarting activator"
     stop
     start
 }
 
 function pre-build {
-  echo "Installing activator"
-
-  cd ${OPENSHIFT_DATA_DIR}
-  curl ${ACTIVATOR_SOURCE_URL} > activator.zip
-  unzip activator.zip
-  rm activator.zip
-  ln -s ${OPENSHIFT_DATA_DIR}/activator-${ACTIVATOR_VERSION} ${OPENSHIFT_DATA_DIR}/activator  
+  if [ ! -f ${OPENSHIFT_DATA_DIR}/activator ]
+  then
+    client_message "Installing activator"
+    cd ${OPENSHIFT_DATA_DIR}
+    curl ${ACTIVATOR_SOURCE_URL} > activator.zip
+    unzip activator.zip
+    rm activator.zip
+    ln -s ${OPENSHIFT_DATA_DIR}/activator-${ACTIVATOR_VERSION} ${OPENSHIFT_DATA_DIR}/activator  
+  fi
 }
 
 function build {
-    echo "Building (From control script)"
+    client_message "Building (From control script)"
     activator clean stage
 }
 
 function tidy {
     shopt -s dotglob
-    rm -rf $OPENSHIFT_TMP_DIR/*
+    rm -rf ${OPENSHIFT_TMP_DIR}/*
 }
 
 function catchall {

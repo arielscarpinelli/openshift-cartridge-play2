@@ -22,15 +22,12 @@ Cart-Data:
   - Key: PLAY_APP_NAME
     Type: environment
     Description: "Internal name of the deployed play application."
-  - Key: OPENSHIFT_PLAY2_LOG_DIR
-    Type: environment
-    Description: "Directory to store application log files."
   - Key: OPENSHIFT_TMP_DIR
     Type: environment
     Description: "Directory to store application temporary files."
   - Key: OPENSHIFT_REPO_DIR
     Type: environment
-  - Key: OPENSHIFT_PLAY2_PORT
+  - Key: OPENSHIFT_PLAY2_WEB_PORT
     Type: environment
     Description: "Internal port to which the web-framework binds to."
   - Key: OPENSHIFT_PLAY2_IP
@@ -57,13 +54,13 @@ Group-Overrides:
     - web_proxy
 Publishes:
   get-doc-root:
-    Type: "FILESYSTEM:doc-root"
+    Type: FILESYSTEM:doc-root
   publish-http-url:
-    Type: "NET_TCP:httpd-proxy-info"
+    Type: NET_TCP:httpd-proxy-info
   publish-gear-endpoint:
-    Type: "NET_TCP:gear-endpoint-info"
+    Type: NET_TCP:gear-endpoint-info
   publish-akka-cluster-info:
-    Type: "NET_TCP:akka-cluster-info"
+    Type: NET_TCP:akka-cluster-info
 Subscribes:
   set-env:
     Type: ENV:*
