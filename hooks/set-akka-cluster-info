@@ -13,6 +13,7 @@ end
 
 pub_outputs.each_with_index do |pub_output, seed_index|
   gear_id, value = pub_output.split('=')
+  puts "Arg is #{pub_output}"
   puts "Setting AKKA_SEED_#{seed_index} to #{value}"
   File.open(ENV['OPENSHIFT_PLAY2_DIR'] + "env/AKKA_SEED_#{seed_index}", 'w'){ |env_file| env_file.puts value}
 end
