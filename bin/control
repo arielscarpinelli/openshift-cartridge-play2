@@ -22,7 +22,7 @@ function start {
 }
 
 function stop {
-    kill $(cat ${OPENSHIFT_LOG_DIR}/play.lo) || true
+    kill $(cat ${PLAY_PID_FILE}) || true
 }
 
 function restart {
