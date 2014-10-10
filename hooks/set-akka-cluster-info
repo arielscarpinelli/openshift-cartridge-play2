@@ -8,7 +8,7 @@ gear_uuid = ARGV.shift
 
 pub_outputs = ARGV.shift.split(' ')
 
-pub_outputs.each_with_index do |pub_output, seed_index|
+pub_outputs.sort.each_with_index do |pub_output, seed_index|
   gear_id, value = pub_output.split('=')
   puts "Arg is #{pub_output}"
   puts "Setting AKKA_SEED_#{seed_index} to #{value}"
