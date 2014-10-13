@@ -40,6 +40,8 @@ function pre-build {
     unzip activator.zip
     rm activator.zip
     ln -s ${OPENSHIFT_DATA_DIR}/activator-${ACTIVATOR_VERSION} ${OPENSHIFT_DATA_DIR}/activator  
+  else
+    client_message "Activator already installed"
   fi
 }
 
