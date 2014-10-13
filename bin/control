@@ -32,7 +32,7 @@ function restart {
 }
 
 function pre-build {
-  if [ ! -f ${OPENSHIFT_DATA_DIR}/activator ]
+  if [ ! -d ${OPENSHIFT_DATA_DIR}/activator ]
   then
     client_message "Installing activator"
     cd ${OPENSHIFT_DATA_DIR}
