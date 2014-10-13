@@ -46,6 +46,7 @@ function pre-build {
 }
 
 function build {
+    pre-build
     client_message "Building (From control script)"
     activator clean stage
 }
