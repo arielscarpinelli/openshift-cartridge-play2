@@ -37,6 +37,7 @@ function pre-build {
     client_message "Installing activator"
     cd ${OPENSHIFT_DATA_DIR}
     if [ ! -f activator.zip ]
+    then
       curl http://downloads.typesafe.com/typesafe-activator/${ACTIVATOR_VERSION}/typesafe-activator-${ACTIVATOR_VERSION}.zip > activator.zip
     fi
     unzip activator.zip
