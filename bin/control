@@ -71,7 +71,7 @@ case "$1" in
   status)      status ;;
   reload)      catchall ;;
   tidy)        tidy ;;
-  pre-build)   catchall ;;
+  pre-build)   pre-build ;;
   build)       build ;;
   deploy)      catchall ;;
   post-deploy) catchall ;;
