@@ -8,4 +8,6 @@ set -e
 #
 # Publish this gear's Akka IP address and port.
 #
-printf "akka.tcp://${AKKA_ACTOR_SYSTEM_NAME}@${OPENSHIFT_GEAR_DNS}:${OPENSHIFT_PLAY2_AKKA_PROXY_PORT}"
+if [[ ${OPENSHIFT_APP_UUID} != ${OPENSHIFT_GEAR_UUID} ]]; then
+  printf "akka.tcp://${AKKA_ACTOR_SYSTEM_NAME}@${OPENSHIFT_GEAR_DNS}:${OPENSHIFT_PLAY2_AKKA_PROXY_PORT}"
+fi
