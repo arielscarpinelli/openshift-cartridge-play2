@@ -26,7 +26,7 @@ function stop {
 }
 
 function restart {
-    client_message "Restarting activator"
+    client_message "Restarting play"
     stop
     start
 }
@@ -49,7 +49,6 @@ function pre-build {
 }
 
 function build {
-    pre-build
     client_message "Building (From control script)"
     cd ${OPENSHIFT_REPO_DIR}
     activator clean stage -Duser.home=${OPENSHIFT_DATA_DIR} -mem ${OPENSHIFT_GEAR_MEMORY_MB}
