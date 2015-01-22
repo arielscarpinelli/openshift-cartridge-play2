@@ -3,7 +3,7 @@ Cartridge-Short-Name: Play2
 Display-Name: Play Framework 2.3.5
 Description: "The High Velocity Web Framework For Java and Scala"
 Version: '2.3.5'
-Source-Url: git://github.com/pat2man/openshift-cartridge-play2.git
+Source-Url: https://codeload.github.com/pat2man/openshift-cartridge-play2/zip/1.0.0
 License: "MIT"
 Vendor: typesafe
 Cartridge-Version: '1.0.0'
