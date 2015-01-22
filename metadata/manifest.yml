@@ -1,27 +1,28 @@
 Name: play2
 Cartridge-Short-Name: Play2
-Display-Name: Play Framework 2.3.4
+Display-Name: Play Framework 2.3.5
 Description: "The High Velocity Web Framework For Java and Scala"
-Version: '2.3.4'
-Source-Url: git://github.com/pat2man/openshift-cartridge-play2.git
+Version: '2.3.5'
 License: "MIT"
 Vendor: typesafe
-Cartridge-Version: '2.3.4'
+Cartridge-Version: '2.3.5'
 Cartridge-Vendor: ticketfly
 Categories:
   - service
   - play
   - scala
   - web_framework
+  - activator
 Provides:
   - play2
+  - activator
 Scaling:
   Min: 1
   Max: -1
 Cart-Data:
-  - Key: PLAY_APP_NAME
+  - Key: OPENSHIFT_PLAY2_LOG_DIR
     Type: environment
-    Description: "Internal name of the deployed play application."
+    Description: "Directory to store application log files."
   - Key: OPENSHIFT_TMP_DIR
     Type: environment
     Description: "Directory to store application temporary files."
@@ -51,26 +52,24 @@ Cart-Data:
 Group-Overrides:
   - components:
     - play2
+    - activator
     - web_proxy
 Publishes:
   get-doc-root:
-    Type: FILESYSTEM:doc-root
+    Type: "FILESYSTEM:doc-root"
   publish-http-url:
-    Type: NET_TCP:httpd-proxy-info
+    Type: "NET_TCP:httpd-proxy-info"
   publish-gear-endpoint:
-    Type: NET_TCP:gear-endpoint-info
-  publish-akka-remote-info:
-    Type: NET_TCP:akka-remote-info
+    Type: "NET_TCP:gear-endpoint-info"
 Subscribes:
   set-env:
     Type: ENV:*
+  set-db-connection-info:
+    Type: "ENV:NET_TCP:db:connection-info"
     Required: false
-  set-mysql-connection-info:
-    Type: NET_TCP:db:mysql
-    Required: false
-  set-postgres-connection-info:
-    Type: NET_TCP:db:postgres
-    Required: false
+  set-nosql-db-connection-info:
+    Type: "ENV:NET_TCP:nosqldb:connection-info"
+    Required : false
   set-akka-remote-info:
     Type: NET_TCP:akka-remote-info
     Required: false
