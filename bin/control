@@ -5,12 +5,13 @@ source ${OPENSHIFT_CARTRIDGE_SDK_BASH}
 function start {
     cd ${OPENSHIFT_REPO_DIR}
     
-    if [ ! -f target/universal/stage/bin/${PLAY_APP_NAME} ]
+    BIN_NAME=$(ls target/universal/stage/bin/ | head -n 1)
+    if [ ! -f ${BIN_NAME} ]
     then
       client_message "App not deployed yet"
     else
       client_message "Starting play app"
-      nohup target/universal/stage/bin/${PLAY_APP_NAME} \
+      nohup target/universal/stage/bin/${BIN_NAME} \
         -Duser.home=${OPENSHIFT_DATA_DIR} \
         -Dhttp.port=${OPENSHIFT_PLAY2_WEB_PORT} \
         -Dhttp.address=${OPENSHIFT_PLAY2_IP} \
