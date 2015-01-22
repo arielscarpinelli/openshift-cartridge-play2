@@ -6,7 +6,7 @@ Version: '2.3.5'
 Source-Url: git://github.com/pat2man/openshift-cartridge-play2.git
 License: "MIT"
 Vendor: typesafe
-Cartridge-Version: '2.3.5'
+Cartridge-Version: '1.0.0'
 Cartridge-Vendor: ticketfly
 Categories:
   - service
