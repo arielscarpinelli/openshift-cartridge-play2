@@ -1,4 +1,4 @@
-[![logo](http://www.playframework.com/assets/images/logos/normal-mini.png)](http://www.playframework.com/)
+[![logo](https://playframework.com/assets/images/logos/play_full_color.png)](http://www.playframework.com/)
 
 # OpenShift Play Framework Cartridge
 
