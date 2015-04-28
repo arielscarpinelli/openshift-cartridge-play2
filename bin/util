@@ -1,0 +1,15 @@
+#!/bin/bash -eu
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+function update-configuration() {
+  if marker_present java8 || [ ${1:-undefined} == java8 ]
+  then
+    export JAVA_HOME=$OPENSHIFT_PLAY2_JDK8
+  else
+    export JAVA_HOME=$OPENSHIFT_PLAY2_JDK7
+  fi
+
+  echo $JAVA_HOME > $OPENSHIFT_PLAY2_DIR/env/JAVA_HOME
+  echo "$JAVA_HOME/bin:$OPENSHIFT_DATA_DIR/activator" > $OPENSHIFT_PLAY2_DIR/env/OPENSHIFT_PLAY2_PATH_ELEMENT
+}
