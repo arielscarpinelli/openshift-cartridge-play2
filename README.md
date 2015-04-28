@@ -16,9 +16,11 @@ Note that it takes about 5 minutes to create the application since it will downl
 
 ### command line (rhc)
 
-```rhc app create playtest http://cartreflect-claytondev.rhcloud.com/reflect\?github\=pat2man/openshift-cartridge-play2 --no-git -s```
+```rhc app create playtest http://cartreflect-claytondev.rhcloud.com/reflect\?github\=arielscarpinelli/openshift-cartridge-play2 --no-git -s```
 
-This will create a play application but it will not deploy any code. To deploy your app take a look at this deploy script:
+
+### binary deploy 
+If you prefer to upload a complete build instead of building in server, deploy your app take a look at this deploy script:
 
 https://gist.github.com/pat2man/870f3ae1c86f0b11f300
 
